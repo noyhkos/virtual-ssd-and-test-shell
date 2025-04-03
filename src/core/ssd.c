@@ -2,23 +2,28 @@
 #include <stdlib.h>
 #include <string.h>
 #include "ssd.h"
-#include "file_io.h"
+#include "../utils/file_io.h"
 
-// WriteNand 함수 구현
 void WriteNand(int lba, uint32_t data) {
-    FILE *nandFile = openNandFileForWriting("r+b");  // 'r+b'로 파일을 열기
+    // r : 읽기 모드, b : 바이너리 모드로 열기
+    FILE *nandFile = openNandFileForWriting("r+b");  // 
     if (nandFile == NULL) {
         printf("Error opening NAND file for writing.\n");
         return;
     }
 
-    // LBA 위치로 이동하여 데이터 쓰기기
+    // LBA 위치로 이동하여 데이터 쓰기
+    // lba * sizeof(uint32_t)만큼
+    // SEEK_SET : 처음부터 찾기
     fseek(nandFile, lba * sizeof(uint32_t), SEEK_SET);
+
+    // data 쓰기
     fwrite(&data, sizeof(uint32_t), 1, nandFile);
+
+    // 파일 닫기기
     fclose(nandFile);
 }
 
-// ReadFromNand 함수 구현
 void ReadFromNand(int lba) {
     FILE *nandFile = openNandFileForReading("rb");  // 'rb'로 파일 열기
     if (nandFile == NULL) {
@@ -36,5 +41,16 @@ void ReadFromNand(int lba) {
     if (resultFile != NULL) {
         fprintf(resultFile, "0x%08X\n", data);
         fclose(resultFile);
+    }
+}
+
+int main(int argc, char* argv[]){
+    if(argv[1]=='W' && argc == 4){
+        int lba = atoi(argv[2]);
+        WriteNand(lba, argv[3]);
+    }
+    else if(argv[1]=='R'&&argc==3){
+        int lba = atoi(argv[2]);
+        ReadFromNand(lba);
     }
 }
