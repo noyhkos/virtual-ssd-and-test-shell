@@ -1,6 +1,7 @@
 #include <stdio.h>
-#include <string.h>
-#include <ctype.h>
+#include <string.h> // strtok, strcpy, strlen, memset
+#include <ctype.h> //isdigit(), isxdigit()
+#include <stdlib.h> // atoi()
 
 #include "command_parser.h"
 
@@ -56,6 +57,7 @@ int parse_command(const char *input, ParsedCommand *result){
     memset(result->data, 0, sizeof(result->data));
 
     //명령어(인자[0])에 따라 result에 값 저장
+    // write
     if(strcmp(tokens[0],"write")==0){
         //인자 개수 부족하면 컷
         if(token_count!=3)return -1;
@@ -63,39 +65,48 @@ int parse_command(const char *input, ParsedCommand *result){
         result->type = CMD_WRITE;
         result->lba = atoi(tokens[1]);
         strcpy(result->data, tokens[2], sizeof(result->data) -1);
-    } else if(strcmp(tokens[0],"read")==0){
-        //인자 개수 부족하면 컷
+    } 
+    // read
+    else if(strcmp(tokens[0],"read")==0){
         if(token_count!=2)return -1;
         if(!is_valid_lab(tokens[1]))return -1;
         result->type = CMD_READ;
         result->lba = atoi(tokens[1]);
-    } else if(strcmp(tokens[0],"exit")==0){
-        //인자 개수 부족하면 컷
+    } 
+    // exit
+    else if(strcmp(tokens[0],"exit")==0){
         if(token_count!=1)return -1;
         result->type = CMD_EXIT;
-    } else if(strcmp(tokens[0],"help")==0){
-        //인자 개수 부족하면 컷
+    } 
+    // help
+    else if(strcmp(tokens[0],"help")==0){
         if(token_count!=1)return -1;
         result->type = CMD_HELP;
-    } else if(strcmp(tokens[0],"fullwrite")==0){
-        //인자 개수 부족하면 컷
+    } 
+    // fullwrite
+    else if(strcmp(tokens[0],"fullwrite")==0){
         if(token_count!=2)return -1;
         if(!is_valid_data(tokens[1]))return -1;
         result->type = CMD_FULLWRITE;
         strcpy(result->data, tokens[1], sizeof(result->data));
-    } else if(strcmp(tokens[0],"fullread")==0){
-        //인자 개수 부족하면 컷
+    } 
+    // fullread
+    else if(strcmp(tokens[0],"fullread")==0){
         if(token_count!=1)return -1;
         result->type = CMD_FULLREAD;
-    } else if(strcmp(tokens[0],"testapp1")==0){
-        //인자 개수 부족하면 컷
+    } 
+    // testapp1
+    else if(strcmp(tokens[0],"testapp1")==0){
         if(token_count!=1)return -1;
         result->type = CMD_TESTAPP1;
-    } else if(strcmp(tokens[0],"testapp2")==0){
-        //인자 개수 부족하면 컷
+    } 
+    // testapp2
+    else if(strcmp(tokens[0],"testapp2")==0){
         if(token_count!=1)return -1;
         result->type = CMD_TESTAPP2;
-    } else {
+    } 
+    // none
+    else {
         result->type = CMD_UNKNOWN;
         return -1;
     }
