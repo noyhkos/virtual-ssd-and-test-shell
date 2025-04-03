@@ -64,7 +64,8 @@ int parse_command(const char *input, ParsedCommand *result){
         if(!is_valid_lab(tokens[1]) || !is_valid_data(tokens[2]))return -1;
         result->type = CMD_WRITE;
         result->lba = atoi(tokens[1]);
-        strcpy(result->data, tokens[2], sizeof(result->data) -1);
+        strncpy(result->data, tokens[2], sizeof(result->data)-1);
+        result->data[sizeof(result->data) - 1] = '\0';
     } 
     // read
     else if(strcmp(tokens[0],"read")==0){
@@ -88,7 +89,8 @@ int parse_command(const char *input, ParsedCommand *result){
         if(token_count!=2)return -1;
         if(!is_valid_data(tokens[1]))return -1;
         result->type = CMD_FULLWRITE;
-        strcpy(result->data, tokens[1], sizeof(result->data));
+        strncpy(result->data, tokens[1], sizeof(result->data));
+        result->data[sizeof(result->data) - 1] = '\0';
     } 
     // fullread
     else if(strcmp(tokens[0],"fullread")==0){

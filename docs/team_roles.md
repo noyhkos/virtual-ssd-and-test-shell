@@ -1,4 +1,7 @@
 ~/ssdTest/
+├── testShell.exe
+├── bin/
+│   └── ssd.exe
 ├── src/                    
 │   ├── core/               
 │   │   ├── ssd.c            // Team A: Logical Block 처리 및 핵심 기능 구현
