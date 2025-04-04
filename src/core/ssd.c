@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "ssd.h"
+#include <stdint.h>
 #include "../utils/file_io.h"
 
 void WriteNand(int lba, uint32_t data) {
@@ -17,15 +17,19 @@ void WriteNand(int lba, uint32_t data) {
     // SEEK_SET : 처음부터 찾기
     fseek(nandFile, lba * sizeof(uint32_t), SEEK_SET);
 
-    // data 쓰기
-    fwrite(&data, sizeof(uint32_t), 1, nandFile);
+    // 16진수 앞에 0x 붙이기
+    char hexString[10];
+    sprintf(hexString, "0x%X", data);
 
-    // 파일 닫기기
+    // data 쓰기
+    fwrite(hexString, strlen(hexString), 1, nandFile);
+
+    // 파일 닫기
     fclose(nandFile);
 }
 
-void ReadFromNand(int lba) {
-    FILE *nandFile = openNandFileForReading("rb");  // 'rb'로 파일 열기
+void ReadResult(int lba) {
+    FILE *nandFile = openNandFileForReading("r+b");
     if (nandFile == NULL) {
         printf("Error opening NAND file for reading.\n");
         return;
@@ -39,6 +43,7 @@ void ReadFromNand(int lba) {
     // result.txt에 데이터를 기록하는 기능
     FILE *resultFile = openResultFileForWriting();
     if (resultFile != NULL) {
+        // 0x 붙은 16진수 형태로 기록
         fprintf(resultFile, "0x%08X\n", data);
         fclose(resultFile);
     }
@@ -47,10 +52,12 @@ void ReadFromNand(int lba) {
 int main(int argc, char* argv[]){
     if(argv[1]=='W' && argc == 4){
         int lba = atoi(argv[2]);
-        WriteNand(lba, argv[3]);
+        uint32_t data;
+        sscanf(argv[3], "%X", data);
+        WriteNand(lba, data);
     }
     else if(argv[1]=='R'&&argc==3){
         int lba = atoi(argv[2]);
-        ReadFromNand(lba);
+        ReadResult(lba);
     }
 }
