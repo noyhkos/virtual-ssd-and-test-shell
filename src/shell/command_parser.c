@@ -61,7 +61,7 @@ int parse_command(const char *input, ParsedCommand *result){
     if(strcmp(tokens[0],"write")==0){
         //인자 개수 부족하면 컷
         if(token_count!=3)return -1;
-        if(!is_valid_lab(tokens[1]) || !is_valid_data(tokens[2]))return -1;
+        if(!is_valid_lba(tokens[1]) || !is_valid_data(tokens[2]))return -1;
         result->type = CMD_WRITE;
         result->lba = atoi(tokens[1]);
         strncpy(result->data, tokens[2], sizeof(result->data)-1);
@@ -70,17 +70,17 @@ int parse_command(const char *input, ParsedCommand *result){
     // read
     else if(strcmp(tokens[0],"read")==0){
         if(token_count!=2)return -1;
-        if(!is_valid_lab(tokens[1]))return -1;
+        if(!is_valid_lba(tokens[1]))return -1;
         result->type = CMD_READ;
         result->lba = atoi(tokens[1]);
     } 
     // exit
-    else if(strcmp(tokens[0],"exit")==0){
+    else if(strcmp(tokens[0],"exit\n")==0){
         if(token_count!=1)return -1;
         result->type = CMD_EXIT;
     } 
     // help
-    else if(strcmp(tokens[0],"help")==0){
+    else if(strcmp(tokens[0],"help\n")==0){
         if(token_count!=1)return -1;
         result->type = CMD_HELP;
     } 
@@ -98,12 +98,12 @@ int parse_command(const char *input, ParsedCommand *result){
         result->type = CMD_FULLREAD;
     } 
     // testapp1
-    else if(strcmp(tokens[0],"testapp1")==0){
+    else if(strcmp(tokens[0],"testapp1\n")==0){
         if(token_count!=1)return -1;
         result->type = CMD_TESTAPP1;
     } 
     // testapp2
-    else if(strcmp(tokens[0],"testapp2")==0){
+    else if(strcmp(tokens[0],"testapp2\n")==0){
         if(token_count!=1)return -1;
         result->type = CMD_TESTAPP2;
     } 

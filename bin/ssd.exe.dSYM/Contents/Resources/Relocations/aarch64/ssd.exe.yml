@@ -1,0 +1,14 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '../bin/ssd.exe'
+relocations:
+  - { offset: 0x26, size: 0x8, addend: 0x0, symName: _WriteNand, symObjAddr: 0x0, symBinAddr: 0x1000039D0, symSize: 0xF4 }
+  - { offset: 0x42, size: 0x8, addend: 0x0, symName: _WriteNand, symObjAddr: 0x0, symBinAddr: 0x1000039D0, symSize: 0xF4 }
+  - { offset: 0x90, size: 0x8, addend: 0x0, symName: _ReadResult, symObjAddr: 0xF4, symBinAddr: 0x100003AC4, symSize: 0xC8 }
+  - { offset: 0xDE, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x1BC, symBinAddr: 0x100003B8C, symSize: 0xE8 }
+  - { offset: 0x39E, size: 0x8, addend: 0x0, symName: _openNandFileForReading, symObjAddr: 0x0, symBinAddr: 0x100003C74, symSize: 0x58 }
+  - { offset: 0x3BA, size: 0x8, addend: 0x0, symName: _openNandFileForReading, symObjAddr: 0x0, symBinAddr: 0x100003C74, symSize: 0x58 }
+  - { offset: 0x3F0, size: 0x8, addend: 0x0, symName: _openNandFileForWriting, symObjAddr: 0x58, symBinAddr: 0x100003CCC, symSize: 0x58 }
+  - { offset: 0x426, size: 0x8, addend: 0x0, symName: _openResultFileForWriting, symObjAddr: 0xB0, symBinAddr: 0x100003D24, symSize: 0x58 }
+  - { offset: 0x44E, size: 0x8, addend: 0x0, symName: _openResultFileForReading, symObjAddr: 0x108, symBinAddr: 0x100003D7C, symSize: 0x58 }
+...

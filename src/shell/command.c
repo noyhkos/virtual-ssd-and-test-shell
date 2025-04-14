@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "src/utils/file_io.h"  // result.txt 읽기 유틸 함수 포함
+#include "file_io.h"  // result.txt 읽기 유틸 함수 포함
 #include "command.h" 
 
 #define MAX_LINE 256

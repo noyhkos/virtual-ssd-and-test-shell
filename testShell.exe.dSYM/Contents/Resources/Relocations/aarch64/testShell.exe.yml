@@ -1,0 +1,29 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '../testShell.exe'
+relocations:
+  - { offset: 0x26, size: 0x8, addend: 0x0, symName: _print_help, symObjAddr: 0x0, symBinAddr: 0x1000025CC, symSize: 0x7C }
+  - { offset: 0x93, size: 0x8, addend: 0x0, symName: _print_help, symObjAddr: 0x0, symBinAddr: 0x1000025CC, symSize: 0x7C }
+  - { offset: 0xA8, size: 0x8, addend: 0x0, symName: _run_shell, symObjAddr: 0x7C, symBinAddr: 0x100002648, symSize: 0x2B4 }
+  - { offset: 0x130, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x350, symBinAddr: 0x10000291C, symSize: 0x2C }
+  - { offset: 0x1D9, size: 0x8, addend: 0x0, symName: _readCommand, symObjAddr: 0x0, symBinAddr: 0x100002948, symSize: 0x124 }
+  - { offset: 0x1F4, size: 0x8, addend: 0x0, symName: _readCommand, symObjAddr: 0x0, symBinAddr: 0x100002948, symSize: 0x124 }
+  - { offset: 0x219, size: 0x8, addend: 0x0, symName: _readCommand.buffer, symObjAddr: 0xF90, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offset: 0x25A, size: 0x8, addend: 0x0, symName: _writeCommand, symObjAddr: 0x124, symBinAddr: 0x100002A6C, symSize: 0xA8 }
+  - { offset: 0x29A, size: 0x8, addend: 0x0, symName: _fullRead, symObjAddr: 0x1CC, symBinAddr: 0x100002B14, symSize: 0xC0 }
+  - { offset: 0x2F6, size: 0x8, addend: 0x0, symName: _fullWrite, symObjAddr: 0x28C, symBinAddr: 0x100002BD4, symSize: 0x58 }
+  - { offset: 0x569, size: 0x8, addend: 0x0, symName: _openNandFileForReading, symObjAddr: 0x0, symBinAddr: 0x100002C2C, symSize: 0x58 }
+  - { offset: 0x585, size: 0x8, addend: 0x0, symName: _openNandFileForReading, symObjAddr: 0x0, symBinAddr: 0x100002C2C, symSize: 0x58 }
+  - { offset: 0x5BB, size: 0x8, addend: 0x0, symName: _openNandFileForWriting, symObjAddr: 0x58, symBinAddr: 0x100002C84, symSize: 0x58 }
+  - { offset: 0x5F1, size: 0x8, addend: 0x0, symName: _openResultFileForWriting, symObjAddr: 0xB0, symBinAddr: 0x100002CDC, symSize: 0x58 }
+  - { offset: 0x619, size: 0x8, addend: 0x0, symName: _openResultFileForReading, symObjAddr: 0x108, symBinAddr: 0x100002D34, symSize: 0x58 }
+  - { offset: 0x862, size: 0x8, addend: 0x0, symName: _parse_command, symObjAddr: 0x0, symBinAddr: 0x100002D8C, symSize: 0x52C }
+  - { offset: 0x8CA, size: 0x8, addend: 0x0, symName: _parse_command, symObjAddr: 0x0, symBinAddr: 0x100002D8C, symSize: 0x52C }
+  - { offset: 0x939, size: 0x8, addend: 0x0, symName: _is_valid_lba, symObjAddr: 0x52C, symBinAddr: 0x1000032B8, symSize: 0x100 }
+  - { offset: 0x98B, size: 0x8, addend: 0x0, symName: _is_valid_data, symObjAddr: 0x62C, symBinAddr: 0x1000033B8, symSize: 0x114 }
+  - { offset: 0xA74, size: 0x8, addend: 0x0, symName: _execute_ssd_command, symObjAddr: 0x0, symBinAddr: 0x1000034CC, symSize: 0xB0 }
+  - { offset: 0xA8F, size: 0x8, addend: 0x0, symName: _execute_ssd_command, symObjAddr: 0x0, symBinAddr: 0x1000034CC, symSize: 0xB0 }
+  - { offset: 0xAD4, size: 0x8, addend: 0x0, symName: _verify_lba_range, symObjAddr: 0xB0, symBinAddr: 0x10000357C, symSize: 0x1F4 }
+  - { offset: 0xB6C, size: 0x8, addend: 0x0, symName: _testapp1, symObjAddr: 0x2A4, symBinAddr: 0x100003770, symSize: 0xA0 }
+  - { offset: 0xB94, size: 0x8, addend: 0x0, symName: _testapp2, symObjAddr: 0x344, symBinAddr: 0x100003810, symSize: 0x194 }
+...

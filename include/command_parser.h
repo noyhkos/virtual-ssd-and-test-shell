@@ -1,5 +1,5 @@
 #ifndef COMMAND_PARSER_H
-#define COMMAD_PARSER_H
+#define COMMAND_PARSER_H
 
 // 커맨드 종류 enum
 typedef enum{

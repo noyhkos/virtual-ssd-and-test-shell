@@ -1,5 +1,5 @@
-#include "../../include/tests.h"
-#include "../utils/file_io.h"
+#include "tests.h"
+#include "file_io.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

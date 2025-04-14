@@ -3,10 +3,10 @@
 #include <stdlib.h>
 
 // nand.txt 경로
-#define NAND_PATH "./data/nand.txt"
+#define NAND_PATH "../data/nand.txt"
 
 // result.txt 경로
-#define RESULT_PATH "./data/result.txt"
+#define RESULT_PATH "../data/result.txt"
 
 // NAND 파일을 읽기 모드로 열기
 FILE* openNandFileForReading(const char *mode) {

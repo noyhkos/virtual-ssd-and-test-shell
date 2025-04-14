@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
-#include "../utils/file_io.h"
+#include "file_io.h"
+#include "ssd.h"
+
 
 void WriteNand(int lba, uint32_t data) {
     // r : 읽기 모드, b : 바이너리 모드로 열기
@@ -50,13 +52,13 @@ void ReadResult(int lba) {
 }
 
 int main(int argc, char* argv[]){
-    if(argv[1]=='W' && argc == 4){
+    if(argv[1][0]=='W' && argc == 4){
         int lba = atoi(argv[2]);
         uint32_t data;
-        sscanf(argv[3], "%X", data);
+        sscanf(argv[3], "%X", &data);
         WriteNand(lba, data);
     }
-    else if(argv[1]=='R'&&argc==3){
+    else if(argv[1][0]=='R'&&argc==3){
         int lba = atoi(argv[2]);
         ReadResult(lba);
     }

@@ -3,9 +3,9 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "./command_parser.h"
-#include "include/command.h"
-#include "include/tests.h"
+#include "command_parser.h"
+#include "command.h"
+#include "tests.h"
 
 void print_help() {
     printf("Available commands:\n");
